@@ -79,9 +79,7 @@ function App() {
   // INTENTIONAL ISSUE: Delete mutation not implemented
   const deleteTodoMutation = useMutation({
     mutationFn: async (id) => {
-      // TODO: Implement delete functionality
-      console.log('Delete todo:', id);
-      // Missing: await fetch(`${API_URL}/${id}`, { method: 'DELETE' });
+      await fetch(`${API_URL}/${id}`, { method: 'DELETE' });
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['todos'] });
@@ -104,7 +102,9 @@ function App() {
   };
 
   // INTENTIONAL ISSUE: Edit functionality not implemented
-  // const handleEditTodo = (id, newTitle) => { ... }
+  const handleEditTodo = () => {
+    // Edit not implemented yet
+  };
 
   return (
     <Box
@@ -199,7 +199,7 @@ function App() {
                   <IconButton
                     size="small"
                     color="primary"
-                    onClick={() => console.log('Edit not implemented')}
+                    onClick={handleEditTodo}
                   >
                     <EditIcon />
                   </IconButton>
