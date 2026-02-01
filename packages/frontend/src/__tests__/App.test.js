@@ -15,6 +15,7 @@ const createTestQueryClient = () =>
 // Mock fetch for tests
 global.fetch = jest.fn(() =>
   Promise.resolve({
+    ok: true,
     json: () => Promise.resolve([]),
   })
 );
@@ -47,6 +48,7 @@ describe('Stats Display', () => {
 
     global.fetch.mockImplementationOnce(() =>
       Promise.resolve({
+        ok: true,
         json: () => Promise.resolve(mockTodos),
       })
     );
@@ -72,6 +74,7 @@ describe('Stats Display', () => {
 
     global.fetch.mockImplementationOnce(() =>
       Promise.resolve({
+        ok: true,
         json: () => Promise.resolve(mockTodos),
       })
     );
@@ -94,6 +97,7 @@ describe('Empty State', () => {
   test('should display empty state message when there are no todos', async () => {
     global.fetch.mockImplementationOnce(() =>
       Promise.resolve({
+        ok: true,
         json: () => Promise.resolve([]),
       })
     );
@@ -117,6 +121,7 @@ describe('Empty State', () => {
 
     global.fetch.mockImplementationOnce(() =>
       Promise.resolve({
+        ok: true,
         json: () => Promise.resolve(mockTodos),
       })
     );
@@ -184,6 +189,7 @@ describe('Edit Functionality', () => {
 
     global.fetch.mockImplementation(() =>
       Promise.resolve({
+        ok: true,
         json: () => Promise.resolve(mockTodos),
       })
     );
@@ -222,16 +228,19 @@ describe('Edit Functionality', () => {
     global.fetch
       .mockImplementationOnce(() =>
         Promise.resolve({
+          ok: true,
           json: () => Promise.resolve(mockTodos),
         })
       )
       .mockImplementationOnce(() =>
         Promise.resolve({
+          ok: true,
           json: () => Promise.resolve(updatedTodo),
         })
       )
       .mockImplementationOnce(() =>
         Promise.resolve({
+          ok: true,
           json: () => Promise.resolve([updatedTodo]),
         })
       );
